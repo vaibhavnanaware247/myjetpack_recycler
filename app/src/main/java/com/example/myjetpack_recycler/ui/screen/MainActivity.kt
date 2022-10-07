@@ -29,22 +29,19 @@ import com.example.myjetpack_recycler.R
 import com.example.myjetpack_recycler.data.Articles
 import com.example.myjetpack_recycler.ui.theme.Myjetpack_recyclerTheme
 import com.example.myjetpack_recycler.viewmodel.NewsViewModel
-import kotlinx.coroutines.DelicateCoroutinesApi
 
 class MainActivity : ComponentActivity() {
 
-    val newsViewModel = NewsViewModel()
+    private val newsViewModel = NewsViewModel()
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Myjetpack_recyclerTheme {
-                // A surface container using the 'background' color from the theme
 
-                Scaffold(backgroundColor = Color.White, topBar = { myTopBar() }) {
+                Scaffold(backgroundColor = Color.White, topBar = { MyTopBar() }) {
 
-                    showRecycler(list = newsViewModel.newsList)
+                    ShowRecycler(list = newsViewModel.newsList)
                     newsViewModel.fetchNews("in")
 
                 }
@@ -55,7 +52,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun showRecycler(list: List<Articles>) {
+fun ShowRecycler(list: List<Articles>) {
 
     if (list.isEmpty()) {
         Column(
@@ -148,7 +145,7 @@ fun NewsItemUi(articles: Articles) {
 
 
 @Composable
-fun myTopBar() {
+fun MyTopBar() {
 
     Box(modifier = Modifier.padding(all = 10.dp)) {
         Text(
