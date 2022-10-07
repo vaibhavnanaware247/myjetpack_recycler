@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Myjetpack_recyclerTheme {
 
-                Scaffold(backgroundColor = Color.White, topBar = { MyTopBar() }) {
+                Scaffold(backgroundColor = Color.White, topBar = { TopBar() }) {
 
                     ShowRecycler(list = newsViewModel.newsList)
                     newsViewModel.fetchNews("in")
@@ -145,7 +145,7 @@ fun NewsItemUi(articles: Articles) {
 
 
 @Composable
-fun MyTopBar() {
+fun TopBar() {
 
     Box(modifier = Modifier.padding(all = 10.dp)) {
         Text(
